@@ -2,7 +2,7 @@
 
 with (import ./patch/default.nix stdenv.lib);
 
-let kernel-path = "${toString pkgs.path}/pkgs/os-specific/linux/kernel/linux-5.6.nix";
+let kernel-path = "${toString pkgs.path}/pkgs/os-specific/linux/kernel/linux-5.9.nix";
     kernel-pkgs = import kernel-path;
 in callPackage ./configure.nix {
 
@@ -12,7 +12,7 @@ in callPackage ./configure.nix {
 
   kernel = callPackage kernel-pkgs {
     kernelPatches = (patchsets [
-      "armbian/5.6"
+      "armbian/5.4"
       "libre/5.4"
     ]);
 
